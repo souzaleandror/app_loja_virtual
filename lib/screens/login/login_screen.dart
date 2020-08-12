@@ -17,6 +17,18 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Entrar"),
         centerTitle: true,
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed('/signup');
+            },
+            textColor: Colors.white,
+            child: const Text(
+              'CRIAR CONTA',
+              style: TextStyle(fontSize: 14),
+            ),
+          )
+        ],
       ),
       body: Center(
         child: Card(
@@ -66,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                         height: 16,
                       ),
                       SizedBox(
-                        height: 46,
+                        height: 44,
                         child: RaisedButton(
                           onPressed: userManager.loading
                               ? null
@@ -77,8 +89,9 @@ class LoginScreen extends StatelessWidget {
                                     //FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passController.text);
                                     //context.read<UserManager>().signIn(
                                     userManager.signIn(
-                                      user: User(emailController.text,
-                                          passController.text),
+                                      user: User(
+                                          email: emailController.text,
+                                          password: passController.text),
                                       onFail: (e) {
                                         print(e);
                                         scaffoldKey.currentState.showSnackBar(
@@ -92,6 +105,7 @@ class LoginScreen extends StatelessWidget {
                                       onSuccess: () {
                                         print('success');
                                         // TODO: FECHAR ALGUMA COISA
+                                        Navigator.of(context).pop();
                                       },
                                     );
                                   }
@@ -107,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                                 )
                               : const Text(
                                   'Entrar',
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 14),
                                 ),
                         ),
                       ),

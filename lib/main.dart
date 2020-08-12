@@ -1,5 +1,7 @@
 import 'package:app_loja_virtual/models/user_manager.dart';
 import 'package:app_loja_virtual/screens/base/base_screen.dart';
+import 'package:app_loja_virtual/screens/login/login_screen.dart';
+import 'package:app_loja_virtual/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => UserManager(),
+      lazy: false,
       child: MaterialApp(
         title: 'Loja Virtual',
         debugShowCheckedModeBanner: false,
@@ -23,6 +26,16 @@ class MyApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
             appBarTheme: const AppBarTheme(elevation: 0)),
         home: BaseScreen(),
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/signup':
+              return MaterialPageRoute(builder: (_) => SignUpScreen());
+            case '/login':
+              return MaterialPageRoute(builder: (_) => LoginScreen());
+            case '/base':
+              return MaterialPageRoute(builder: (_) => LoginScreen());
+          }
+        },
       ),
     );
   }

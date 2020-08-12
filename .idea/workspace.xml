@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d191a6a-1b66-4e8c-a708-6fd801e8457c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/helpers/firebase_errors.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/helpers/validators.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/user_manager.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/custom_drawer/custom_drawer_header.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/signup/signup_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/custom_drawer/drawer_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/custom_drawer/drawer_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/custom_drawer/custom_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/custom_drawer/custom_drawer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/page_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/page_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user_manager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -1,9 +1,13 @@
+import 'package:app_loja_virtual/models/product_manager.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
 import 'package:app_loja_virtual/screens/base/base_screen.dart';
 import 'package:app_loja_virtual/screens/login/login_screen.dart';
+import 'package:app_loja_virtual/screens/product/product_screen.dart';
 import 'package:app_loja_virtual/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'models/product.dart';
 
 // leco@user.com 123123
 void main() {
@@ -13,9 +17,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserManager(),
-      lazy: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductManager(),
+          lazy: false,
+        )
+      ],
       child: MaterialApp(
         title: 'Loja Virtual',
         debugShowCheckedModeBanner: false,
@@ -34,6 +46,9 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => LoginScreen());
             case '/base':
               return MaterialPageRoute(builder: (_) => LoginScreen());
+            case '/product':
+              return MaterialPageRoute(
+                  builder: (_) => ProductScreen(settings.arguments as Product));
           }
         },
       ),

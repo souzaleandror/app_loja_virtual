@@ -9,7 +9,7 @@ class ProductManager extends ChangeNotifier {
 
   final Firestore firestore = Firestore.instance;
 
-  List<Product> _allProducts;
+  List<Product> allProducts;
 
   String _search = '';
 
@@ -24,9 +24,9 @@ class ProductManager extends ChangeNotifier {
     final List<Product> filteredProducts = [];
 
     if (search.isEmpty) {
-      filteredProducts.addAll(_allProducts);
+      filteredProducts.addAll(allProducts);
     } else {
-      filteredProducts.addAll(_allProducts
+      filteredProducts.addAll(allProducts
           .where((p) => p.name.toLowerCase().contains(search.toLowerCase())));
     }
     return filteredProducts;
@@ -40,7 +40,7 @@ class ProductManager extends ChangeNotifier {
       print(doc.data);
     }
 
-    _allProducts =
+    allProducts =
         snapProducts.documents.map((d) => Product.fromDocument(d)).toList();
 
     notifyListeners();

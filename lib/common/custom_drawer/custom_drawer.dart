@@ -10,12 +10,12 @@ class CustomDrawer extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              colors: [const Color.fromARGB(255, 203, 236, 241), Colors.white],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            )),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color.fromARGB(255, 203, 236, 241), Colors.white]),
+            ),
           ),
           ListView(
             children: <Widget>[

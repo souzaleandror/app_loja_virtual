@@ -32,4 +32,6 @@ class User {
       'confirmPassword': confirmPassword
     };
   }
+
+  CollectionReference get cartReference => firebaseRef.collection('cart');
 }

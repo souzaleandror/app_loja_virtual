@@ -1,15 +1,16 @@
 import 'package:app_loja_virtual/models/cart_product.dart';
 import 'package:app_loja_virtual/models/product.dart';
-import 'package:app_loja_virtual/models/user.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
+import 'package:app_loja_virtual/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class CartManager {
   List<CartProduct> items = [];
 
-  User user;
+  UserModel user;
 
-  updateUser(UserManager userManager) {
+  void updateUser(UserManager userManager) {
     user = userManager.user;
     items.clear();
 
@@ -20,9 +21,9 @@ class CartManager {
 
   Future<void> _loadCartItems() async {
     //user.firebaseRef.collection(cart);
-    final QuerySnapshot cartSnap = await user.cartReference.getDocuments();
+    final QuerySnapshot cartSnap = await user.cartReference.get();
 
-    items = cartSnap.documents.map((d) => CartProduct.fromDocument(d)).toList();
+    items = cartSnap.docs.map((d) => CartProduct.fromDocument(d)).toList();
   }
 
   void addToCart(Product product) {
@@ -30,6 +31,7 @@ class CartManager {
       final e = items.firstWhere((p) => p.stackable(product));
       e.quantity++;
     } catch (e, ex) {
+      debugPrint('$e >>> $ex');
       final cartProduct = CartProduct.fromProduct(product);
       items.add(cartProduct);
       user.cartReference.add(cartProduct.toCartItemMap());

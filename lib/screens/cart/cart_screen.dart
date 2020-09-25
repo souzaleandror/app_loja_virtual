@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +16,7 @@ class CartScreen extends StatelessWidget {
       body: Consumer<CartManager>(builder: (_, cartManager, __) {
         return Column(
           children: cartManager.items
-              .map((cartManager) => CartTile(cartManager))
+              .map((cartManager) => CartTile(cartProduct: cartManager))
               .toList(),
         );
       }),

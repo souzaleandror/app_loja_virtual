@@ -2,74 +2,78 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // leco@user.com 123123
-void main() async {
-  runApp(MyApp());
+Future<void> main() async {
+  runApp(const MyApp());
 
   //Firestore.instance.collection('teste').add({'teste': 'teste'});
-  Firestore.instance.collection('teste2').add({'teste2': 'teste2'});
+  FirebaseFirestore.instance.collection('teste2').add({'teste2': 'teste2'});
   // Criar
-  Firestore.instance
+  FirebaseFirestore.instance
       .collection('pedidos')
       .add({'preco': 199.99, 'Usuario': 'Daniel'});
-  Firestore.instance
+  FirebaseFirestore.instance
       .collection('pedidos')
-      .document('#00001')
-      .setData({'preco': 100.00, 'usuario': 'Leco'});
-  Firestore.instance
+      .doc('#00001')
+      .set({'preco': 100.00, 'usuario': 'Leco'});
+  FirebaseFirestore.instance
       .collection('pedidos')
-      .document('#00001')
-      .setData({'usuario': 'Leco2'});
+      .doc('#00001')
+      .set({'usuario': 'Leco2'});
   //Update
-  Firestore.instance
+  FirebaseFirestore.instance
       .collection('pedidos')
-      .document('#00001')
-      .updateData({'usuario': 'Leco2'});
+      .doc('#00001')
+      .update({'usuario': 'Leco2'});
 
-  Firestore.instance
-      .document('pedidos/#00001')
-      .updateData({'usuario': 'Leco3'});
+  FirebaseFirestore.instance.doc('pedidos/#00001').update({'usuario': 'Leco3'});
 
   // get data
-  DocumentSnapshot document = await Firestore.instance
+  final DocumentSnapshot doc = await FirebaseFirestore.instance
       .collection('teste')
-      .document('nWe9uCRzxNAu0WxCD85G')
+      .doc('nWe9uCRzxNAu0WxCD85G')
       .get();
 
-  print(document.data);
-  print(document.data['teste']);
-  print(document.data['teste2']);
+  debugPrint(doc.data().toString());
+  debugPrint(doc.data()['teste'].toString());
+  debugPrint(doc.data()['teste2'].toString());
 
   // Documento que nao existe
-  DocumentSnapshot document2 = await Firestore.instance
+  final DocumentSnapshot document2 = await FirebaseFirestore.instance
       .collection('teste3')
-      .document('nWe9uCRzxNAu0WxCD85G2')
+      .doc('nWe9uCRzxNAu0WxCD85G2')
       .get();
 
-  Firestore.instance
+  debugPrint(document2.data().toString());
+
+  FirebaseFirestore.instance
       .collection('teste')
-      .document('nWe9uCRzxNAu0WxCD85G')
+      .doc('nWe9uCRzxNAu0WxCD85G')
       .snapshots()
       .listen((document) {
-    print(document.data);
+    debugPrint(document.data().toString());
   });
 
   // Get todos os documentos em tempo real
-  QuerySnapshot snapshot =
-      await Firestore.instance.collection('pedidos').getDocuments();
+  final QuerySnapshot snapshot =
+      await FirebaseFirestore.instance.collection('pedidos').get();
 
-  for (DocumentSnapshot doc in snapshot.documents) {
-    print(document.data);
+  for (final DocumentSnapshot doc in snapshot.docs) {
+    debugPrint(doc.data().toString());
   }
 
   // Get todos os documentos em tempo real
-  Firestore.instance.collection('pedidos').snapshots().listen((snapshot) {
-    for (DocumentSnapshot doc in snapshot.documents) {
-      print(document.data);
+  FirebaseFirestore.instance
+      .collection('pedidos')
+      .snapshots()
+      .listen((snapshot) {
+    for (final DocumentSnapshot doc in snapshot.docs) {
+      debugPrint(doc.data().toString());
     }
   });
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

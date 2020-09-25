@@ -1,10 +1,12 @@
 import 'package:app_loja_virtual/helpers/validators.dart';
-import 'package:app_loja_virtual/models/user.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
+import 'package:app_loja_virtual/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
+  LoginScreen({Key key}) : super(key: key);
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController emailController = TextEditingController();
@@ -15,7 +17,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: const Text("Entrar"),
+        title: const Text('Entrar'),
         centerTitle: true,
         actions: <Widget>[
           FlatButton(
@@ -89,11 +91,11 @@ class LoginScreen extends StatelessWidget {
                                     //FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passController.text);
                                     //context.read<UserManager>().signIn(
                                     userManager.signIn(
-                                      user: User(
+                                      user: UserModel(
                                           email: emailController.text,
                                           password: passController.text),
                                       onFail: (e) {
-                                        print(e);
+                                        debugPrint(e.toString());
                                         scaffoldKey.currentState.showSnackBar(
                                           SnackBar(
                                             content:
@@ -103,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                                         );
                                       },
                                       onSuccess: () {
-                                        print('success');
+                                        debugPrint('success');
                                         // TODO: FECHAR ALGUMA COISA
                                         Navigator.of(context).pop();
                                       },
@@ -115,7 +117,7 @@ class LoginScreen extends StatelessWidget {
                               Theme.of(context).primaryColor.withAlpha(100),
                           textColor: Colors.white,
                           child: userManager.loading
-                              ? CircularProgressIndicator(
+                              ? const CircularProgressIndicator(
                                   valueColor:
                                       AlwaysStoppedAnimation(Colors.white),
                                 )
@@ -133,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                   child: FlatButton(
                     onPressed: () {},
                     padding: EdgeInsets.zero,
-                    child: Text('Esqueci Minha Senha'),
+                    child: const Text('Esqueci Minha Senha'),
                   ),
                 ),
               )),

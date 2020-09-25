@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductListTile extends StatelessWidget {
-  ProductListTile(this.product);
+  const ProductListTile({Key key, this.product}) : super(key: key);
 
   final Product product;
 
@@ -36,7 +36,7 @@ class ProductListTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       product.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                       ),

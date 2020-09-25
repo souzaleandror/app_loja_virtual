@@ -1,10 +1,12 @@
 import 'package:app_loja_virtual/helpers/validators.dart';
-import 'package:app_loja_virtual/models/user.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
+import 'package:app_loja_virtual/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key key}) : super(key: key);
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController nameController = TextEditingController();
@@ -13,7 +15,7 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  User user = User();
+  final UserModel user = UserModel();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,9 @@ class SignUpScreen extends StatelessWidget {
         child: Card(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Form(
-              key: formKey,
-              child: Consumer<UserManager>(builder: (_, userManager, __) {
+            key: formKey,
+            child: Consumer<UserManager>(
+              builder: (_, userManager, __) {
                 return ListView(
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(10),
@@ -116,7 +119,7 @@ class SignUpScreen extends StatelessWidget {
                                   formKey.currentState.save();
                                   if (user.password != user.confirmPassword) {
                                     scaffoldKey.currentState.showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         content: Text('Senha nao coincidem !'),
                                         backgroundColor: Colors.red,
                                       ),
@@ -147,7 +150,7 @@ class SignUpScreen extends StatelessWidget {
                             Theme.of(context).primaryColor.withAlpha(100),
                         textColor: Colors.white,
                         child: userManager.loading
-                            ? CircularProgressIndicator(
+                            ? const CircularProgressIndicator(
                                 valueColor:
                                     AlwaysStoppedAnimation(Colors.white),
                               )
@@ -159,7 +162,9 @@ class SignUpScreen extends StatelessWidget {
                     )
                   ],
                 );
-              })),
+              },
+            ),
+          ),
         ),
       ),
     );

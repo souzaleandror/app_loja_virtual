@@ -4,8 +4,9 @@ import 'package:app_loja_virtual/screens/products/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// ignore: use_key_in_widget_constructors
 class BaseScreen extends StatelessWidget {
+  BaseScreen({Key key}) : super(key: key);
+
   final PageController pageController = PageController();
 
   @override
@@ -17,20 +18,20 @@ class BaseScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home1'),
             ),
           ),
-          ProductsScreen(),
+          const ProductsScreen(),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home3'),
             ),
           ),
           Scaffold(
-            drawer: CustomDrawer(),
+            drawer: const CustomDrawer(),
             appBar: AppBar(
               title: const Text('Home4'),
             ),

@@ -5,15 +5,15 @@ import 'item_size.dart';
 
 class Product extends ChangeNotifier {
   Product.fromDocument(DocumentSnapshot document) {
-    id = document.documentID;
-    name = document['name'] as String;
-    description = document['description'] as String;
-    images = List<String>.from(document.data['images'] as List<dynamic>);
-    sizes = (document.data['sizes'] as List<dynamic> ?? [])
+    id = document.id;
+    name = document.data()['name'] as String;
+    description = document.data()['description'] as String;
+    images = List<String>.from(document.data()['images'] as List<dynamic>);
+    sizes = (document.data()['sizes'] as List<dynamic> ?? [])
         .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
         .toList();
 
-    print(sizes);
+    debugPrint(sizes.toString());
   }
 
   String id;
@@ -45,6 +45,7 @@ class Product extends ChangeNotifier {
     try {
       return sizes.firstWhere((s) => s.name == name);
     } catch (e, ex) {
+      debugPrint('$e >>> $ex');
       return null;
     }
   }

@@ -7,10 +7,12 @@ import 'package:provider/provider.dart';
 import 'components/search_dialog.dart';
 
 class ProductsScreen extends StatelessWidget {
+  const ProductsScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: Consumer<ProductManager>(
           builder: (_, productManager, __) {
@@ -22,7 +24,8 @@ class ProductsScreen extends StatelessWidget {
                   onTap: () async {
                     final search = await showDialog<String>(
                         context: context,
-                        builder: (_) => SearchDialog(productManager.search));
+                        builder: (_) =>
+                            SearchDialog(initialText: productManager.search));
                     if (search != null) {
                       productManager.search = search;
                     }
@@ -44,11 +47,12 @@ class ProductsScreen extends StatelessWidget {
           Consumer<ProductManager>(builder: (_, productManager, __) {
             if (productManager.search.isEmpty) {
               return IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () async {
                   final search = await showDialog<String>(
                       context: context,
-                      builder: (_) => SearchDialog(productManager.search));
+                      builder: (_) =>
+                          SearchDialog(initialText: productManager.search));
                   if (search != null) {
                     productManager.search = search;
                   }
@@ -56,7 +60,7 @@ class ProductsScreen extends StatelessWidget {
               );
             } else {
               return IconButton(
-                icon: Icon(Icons.close),
+                icon: const Icon(Icons.close),
                 onPressed: () async {
                   productManager.search = '';
                 },
@@ -71,7 +75,7 @@ class ProductsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(4),
           itemCount: filteredProducts.length,
           itemBuilder: (_, index) {
-            return ProductListTile(filteredProducts[index]);
+            return ProductListTile(product: filteredProducts[index]);
           },
         );
       }),
@@ -81,7 +85,7 @@ class ProductsScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushNamed('/cart');
         },
-        child: Icon(Icons.shopping_cart),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }

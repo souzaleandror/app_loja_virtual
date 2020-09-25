@@ -1,5 +1,5 @@
 import 'package:app_loja_virtual/helpers/firebase_errors.dart';
-import 'package:app_loja_virtual/models/user.dart';
+import 'package:app_loja_virtual/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,24 +7,25 @@ import 'package:flutter/services.dart';
 
 class UserManager extends ChangeNotifier {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final Firestore firestore = Firestore.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   UserManager() {
     _loadCurrentUser();
   }
 
   //FirebaseUser user;
-  User user;
+  UserModel user;
 
   bool _loading = false;
   bool get loading => _loading;
   bool get isLoggedIn => user != null;
 
-  Future<void> signIn({User user, Function onFail, Function onSuccess}) async {
+  Future<void> signIn(
+      {UserModel user, Function onFail, Function onSuccess}) async {
     //setLoading(value: true);
     loading = true;
     try {
-      final AuthResult result = await auth.signInWithEmailAndPassword(
+      final UserCredential result = await auth.signInWithEmailAndPassword(
           email: user.email, password: user.password);
 
       //await Future.delayed(Duration(seconds: 4));
@@ -33,8 +34,13 @@ class UserManager extends ChangeNotifier {
       debugPrint(result.user.uid);
       onSuccess();
     } on PlatformException catch (e, ex) {
+      debugPrint(e.code);
       debugPrint("$e >>> $ex");
       onFail(getErrorString(e.code));
+    } on FirebaseAuthException catch (e, ex) {
+      debugPrint(e.code);
+      debugPrint("$e >>> $ex");
+      onFail(getNewAPIErrorString(e.code.trim().toLowerCase()));
     } catch (e, ex) {
       debugPrint("$e >>> $ex");
     }
@@ -42,23 +48,24 @@ class UserManager extends ChangeNotifier {
     loading = false;
   }
 
-  Future<void> _loadCurrentUser({FirebaseUser firebaseUser}) async {
-    FirebaseUser currentUser = firebaseUser ?? await auth.currentUser();
+  Future<void> _loadCurrentUser({User firebaseUser}) async {
+    final User currentUser = firebaseUser ?? auth.currentUser;
     if (currentUser != null) {
       //user = currentUser;
       //print(user.uid);
       final DocumentSnapshot docUser =
-          await firestore.collection('users').document(currentUser.uid).get();
-      user = User.fromDocument(docUser);
+          await firestore.collection('users').doc(currentUser.uid).get();
+      user = UserModel.fromDocument(docUser);
       notifyListeners();
     }
   }
 
-  Future<void> signUp({User user, Function onFail, Function onSuccess}) async {
+  Future<void> signUp(
+      {UserModel user, Function onFail, Function onSuccess}) async {
     //setLoading(value: true);
     loading = true;
     try {
-      final AuthResult result = await auth.createUserWithEmailAndPassword(
+      final UserCredential result = await auth.createUserWithEmailAndPassword(
           email: user.email, password: user.password);
 
       //await Future.delayed(Duration(seconds: 4));

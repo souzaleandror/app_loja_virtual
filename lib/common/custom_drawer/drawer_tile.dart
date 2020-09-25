@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DrawerTile extends StatelessWidget {
-  const DrawerTile({this.iconData, this.title, this.page});
+  const DrawerTile({Key key, this.iconData, this.title, this.page})
+      : super(key: key);
 
   final IconData iconData;
   final String title;

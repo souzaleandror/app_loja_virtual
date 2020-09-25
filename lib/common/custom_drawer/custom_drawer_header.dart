@@ -6,22 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawerHeader extends StatelessWidget {
+  const CustomDrawerHeader({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.fromLTRB(
-          32,
-          24,
-          16,
-          8,
-        ),
-        height: 180,
-        child: Consumer<UserManager>(builder: (_, userManager, __) {
+      padding: const EdgeInsets.fromLTRB(
+        32,
+        24,
+        16,
+        8,
+      ),
+      height: 180,
+      child: Consumer<UserManager>(
+        builder: (_, userManager, __) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text(
+              const Text(
                 'Loja do\nDaniel',
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
@@ -29,7 +32,8 @@ class CustomDrawerHeader extends StatelessWidget {
                 'Ola, ${userManager.user?.name ?? ''}',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               GestureDetector(
                 onTap: () {
@@ -47,6 +51,8 @@ class CustomDrawerHeader extends StatelessWidget {
               )
             ],
           );
-        }));
+        },
+      ),
+    );
   }
 }

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'components/size_widget.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen(this.product);
+  const ProductScreen({Key key, this.product}) : super(key: key);
 
   final Product product;
 
@@ -46,7 +46,7 @@ class ProductScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       product.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
@@ -83,7 +83,7 @@ class ProductScreen extends StatelessWidget {
                       style: const TextStyle(fontSize: 16),
                     ),
                     const Padding(
-                      padding: const EdgeInsets.only(top: 16, bottom: 8),
+                      padding: EdgeInsets.only(top: 16, bottom: 8),
                       child: Text(
                         'Tamanhos',
                         style: TextStyle(

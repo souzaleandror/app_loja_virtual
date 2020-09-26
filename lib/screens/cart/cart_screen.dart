@@ -1,3 +1,4 @@
+import 'package:app_loja_virtual/common/price_card.dart';
 import 'package:app_loja_virtual/models/cart_manager.dart';
 import 'package:app_loja_virtual/screens/cart/components/cart_tile.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,19 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Consumer<CartManager>(builder: (_, cartManager, __) {
-        return Column(
-          children: cartManager.items
-              .map((cartManager) => CartTile(cartProduct: cartManager))
-              .toList(),
+        debugPrint(cartManager.isCartValid.toString());
+        return ListView(
+          children: [
+            Column(
+              children: cartManager.items
+                  .map((cartManager) => CartTile(cartProduct: cartManager))
+                  .toList(),
+            ),
+            PriceCard(
+              buttonText: 'Continuar para o endereco',
+              onTap: cartManager.isCartValid ? () {} : null,
+            ),
+          ],
         );
       }),
     );

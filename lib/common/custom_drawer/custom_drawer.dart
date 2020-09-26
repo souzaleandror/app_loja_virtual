@@ -20,29 +20,28 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListView(
-            children: <Widget>[
-              const CustomDrawerHeader(),
-              const Divider(),
-              // ignore: prefer_const_literals_to_create_immutables
-              const DrawerTile(
+            children: const <Widget>[
+              CustomDrawerHeader(),
+              Divider(),
+              DrawerTile(
                 iconData: Icons.home,
                 title: 'Home',
                 page: 0,
               ),
-              const Divider(),
-              const DrawerTile(
+              Divider(),
+              DrawerTile(
                 iconData: Icons.list,
                 title: 'Produtos',
                 page: 1,
               ),
-              const Divider(),
-              const DrawerTile(
+              Divider(),
+              DrawerTile(
                 iconData: Icons.playlist_add_check,
                 title: 'Meus Pedidos',
                 page: 2,
               ),
-              const Divider(),
-              const DrawerTile(
+              Divider(),
+              DrawerTile(
                 iconData: Icons.location_on,
                 title: 'Lojas',
                 page: 3,

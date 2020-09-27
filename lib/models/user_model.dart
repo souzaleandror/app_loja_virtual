@@ -17,6 +17,7 @@ class UserModel {
   String email;
   String password;
   String confirmPassword;
+  bool admin = false;
 
   DocumentReference get firebaseRef =>
       FirebaseFirestore.instance.doc('users/$id');
@@ -36,4 +37,9 @@ class UserModel {
   }
 
   CollectionReference get cartReference => firebaseRef.collection('cart');
+
+  @override
+  String toString() {
+    return 'UserModel{id: $id, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, admin: $admin}';
+  }
 }

@@ -14,13 +14,13 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<int> inteiros = [
+    final List<int> inteiros = [
       1,
       2,
       3,
       4,
       ...[5, 6],
-      if (false) ...[7, 8],
+      //if (false) ...[7, 8],
       if (true) ...[9, 10],
     ];
 
@@ -49,7 +49,7 @@ class BaseScreen extends StatelessWidget {
                   ),
                 ),
                 if (userManager.adminEnabled) ...[
-                  AdminUsersScreen(),
+                  const AdminUsersScreen(),
                   Scaffold(
                     drawer: const CustomDrawer(),
                     appBar: AppBar(

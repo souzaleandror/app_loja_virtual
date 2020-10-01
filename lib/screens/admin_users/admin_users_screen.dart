@@ -18,7 +18,7 @@ class AdminUsersScreen extends StatelessWidget {
           builder: (_, adminUserManager, __) {
             return AlphabetListScrollView(
               itemBuilder: (_, index) {
-                print(adminUserManager.users[index].admin);
+                debugPrint(adminUserManager.users[index].admin.toString());
                 return ListTile(
                   title: Text(
                     adminUserManager.users[index].name,

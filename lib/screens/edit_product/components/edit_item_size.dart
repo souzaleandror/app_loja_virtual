@@ -90,7 +90,7 @@ class EditItemSize extends StatelessWidget {
           onTap: onMoveUp,
         ),
         CustomIconButton(
-          iconData: Icons.remove,
+          iconData: Icons.arrow_drop_down,
           color: Colors.red,
           onTap: onMoveDown,
         ),

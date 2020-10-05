@@ -13,7 +13,8 @@ class SizesForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormField<List<ItemSize>>(
-      initialValue: List.from(product.sizes),
+      //initialValue: List.from(product.sizes),
+      initialValue: product.sizes,
       validator: (sizes) {
         if (sizes.isEmpty) {
           return 'Precisa de um tamanho';

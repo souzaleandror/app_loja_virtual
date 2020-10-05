@@ -30,9 +30,8 @@ class ProductScreen extends StatelessWidget {
                     return IconButton(
                       icon: const Icon(Icons.edit),
                       onPressed: () {
-                        Navigator.of(context).pushReplacementNamed(
-                            '/edit_product',
-                            arguments: product);
+                        Navigator.of(context)
+                            .pushNamed('/edit_product', arguments: product);
                       },
                     );
                   } else {

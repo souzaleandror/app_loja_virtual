@@ -1,5 +1,6 @@
 import 'package:app_loja_virtual/common/custom_drawer/custom_drawer.dart';
 import 'package:app_loja_virtual/models/product_manager.dart';
+import 'package:app_loja_virtual/models/user_manager.dart';
 import 'package:app_loja_virtual/screens/products/components/product_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class ProductsScreen extends StatelessWidget {
                       productManager.search = search;
                     }
                   },
-                  child: Container(
+                  child: SizedBox(
                     width: constraints.biggest.width,
                     child: Text(
                       productManager.search,
@@ -67,6 +68,21 @@ class ProductsScreen extends StatelessWidget {
               );
             }
           }),
+          Consumer<UserManager>(
+            builder: (_, userManager, __) {
+              if (userManager.adminEnabled) {
+                return IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed('/edit_product', arguments: null);
+                  },
+                );
+              } else {
+                return Container();
+              }
+            },
+          )
         ],
       ),
       body: Consumer<ProductManager>(builder: (_, productManager, __) {

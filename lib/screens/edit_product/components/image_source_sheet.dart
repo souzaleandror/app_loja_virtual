@@ -10,7 +10,7 @@ class ImageSourceSheet extends StatelessWidget {
 
   final ImagePicker picker = ImagePicker();
   final Function(File) onImageSelected;
-  Future<void> editImage(String path, BuildContext context)  async {
+  Future<void> editImage(String path, BuildContext context) async {
     final File croppedFile = await ImageCropper.cropImage(
       sourcePath: path,
       aspectRatio: const CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
@@ -25,7 +25,7 @@ class ImageSourceSheet extends StatelessWidget {
         doneButtonTitle: 'Concluir',
       ),
     );
-    if(croppedFile != null) {
+    if (croppedFile != null) {
       onImageSelected(croppedFile);
     }
   }
@@ -41,18 +41,17 @@ class ImageSourceSheet extends StatelessWidget {
           children: <Widget>[
             FlatButton(
                 onPressed: () async {
-                  PickedFile file =
+                  final PickedFile file =
                       await picker.getImage(source: ImageSource.camera);
                   //File(file.path);
                   //Navigator.of(context).pop(File(file.path));
                   editImage(file.path, context);
                   //onImageSelected(File(file.path));
-
                 },
                 child: const Text('Camera')),
             FlatButton(
                 onPressed: () async {
-                  PickedFile file =
+                  final PickedFile file =
                       await picker.getImage(source: ImageSource.gallery);
                   editImage(file.path, context);
                   //onImageSelected(File(file.path));
@@ -73,7 +72,7 @@ class ImageSourceSheet extends StatelessWidget {
           CupertinoActionSheetAction(
             isDefaultAction: true,
             onPressed: () async {
-              PickedFile file =
+              final PickedFile file =
                   await picker.getImage(source: ImageSource.camera);
               //File(file.path);
               //Navigator.of(context).pop(File(file.path));
@@ -84,7 +83,7 @@ class ImageSourceSheet extends StatelessWidget {
           ),
           CupertinoActionSheetAction(
             onPressed: () async {
-              PickedFile file =
+              final PickedFile file =
                   await picker.getImage(source: ImageSource.gallery);
               editImage(file.path, context);
               //onImageSelected(File(file.path));

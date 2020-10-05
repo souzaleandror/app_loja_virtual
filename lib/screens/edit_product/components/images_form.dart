@@ -18,6 +18,7 @@ class ImagesForm extends StatelessWidget {
       //initialValue: product.images,
       //initialValue: product.images as List<dynamic>,
       initialValue: List.from(product.images),
+      //initialValue: product.images,
       validator: (images) {
         if (images.isEmpty) {
           return 'Insira ao menos uma imagem';
@@ -25,6 +26,7 @@ class ImagesForm extends StatelessWidget {
           return null;
         }
       },
+      onSaved: (images) => product.newImages = images,
       builder: (state) {
         void onImageSelected(File file) {
           state.value.add(file);
@@ -76,14 +78,16 @@ class ImagesForm extends StatelessWidget {
                           if (Platform.isAndroid) {
                             //File file = await showModalBottomSheet(context: context, builder: (_) => ImageSourceSheet());
                             showModalBottomSheet(
-                                context: context,
-                                builder: (_) => ImageSourceSheet(
-                                    onImageSelected: onImageSelected));
+                              context: context,
+                              builder: (_) => ImageSourceSheet(
+                                  onImageSelected: onImageSelected),
+                            );
                           } else {
                             showCupertinoModalPopup(
-                                context: context,
-                                builder: (_) => ImageSourceSheet(
-                                    onImageSelected: onImageSelected));
+                              context: context,
+                              builder: (_) => ImageSourceSheet(
+                                  onImageSelected: onImageSelected),
+                            );
                           }
                         },
                       ),
@@ -105,7 +109,10 @@ class ImagesForm extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   state.errorText,
-                  style: const TextStyle(color: Colors.red, fontSize: 12),
+                  style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 12,
+                  ),
                 ),
               ),
           ],

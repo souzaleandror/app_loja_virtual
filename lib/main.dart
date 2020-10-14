@@ -1,6 +1,7 @@
 import 'package:app_loja_virtual/models/cart_manager.dart';
 import 'package:app_loja_virtual/models/product_manager.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
+import 'package:app_loja_virtual/screens/address/address_screen.dart';
 import 'package:app_loja_virtual/screens/base/base_screen.dart';
 import 'package:app_loja_virtual/screens/cart/cart_screen.dart';
 import 'package:app_loja_virtual/screens/edit_product/edit_product_screen.dart';
@@ -8,6 +9,7 @@ import 'package:app_loja_virtual/screens/login/login_screen.dart';
 import 'package:app_loja_virtual/screens/product/product_screen.dart';
 import 'package:app_loja_virtual/screens/select_product/select_product_screen.dart';
 import 'package:app_loja_virtual/screens/signup/signup_screen.dart';
+import 'package:app_loja_virtual/services/cepaberto_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,10 +18,19 @@ import 'models/admin_users_manager.dart';
 import 'models/home_manager.dart';
 import 'models/product.dart';
 
-// leco@user.com 123123
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  //CEP CERTO
+  CepAbertoService()
+      .getAddressFromCep('05540-100')
+      .then((address) => debugPrint(address.toString()));
+  //CEP errado
+  CepAbertoService()
+      .getAddressFromCep('123123123')
+      .then((address) => debugPrint(address.toString()));
+
   runApp(const MyApp());
 }
 
@@ -64,7 +75,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             appBarTheme: const AppBarTheme(elevation: 0)),
-        home: BaseScreen(),
+        home: const BaseScreen(),
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/signup':
@@ -75,6 +86,8 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => LoginScreen());
             case '/cart':
               return MaterialPageRoute(builder: (_) => const CartScreen());
+            case '/address':
+              return MaterialPageRoute(builder: (_) => const AddressScreen());
             case '/edit_product':
               return MaterialPageRoute(
                   builder: (_) =>

@@ -7,9 +7,14 @@ import 'package:app_loja_virtual/screens/products/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BaseScreen extends StatelessWidget {
-  BaseScreen({Key key}) : super(key: key);
+class BaseScreen extends StatefulWidget {
+  const BaseScreen({Key key}) : super(key: key);
 
+  @override
+  _BaseScreenState createState() => _BaseScreenState();
+}
+
+class _BaseScreenState extends State<BaseScreen> {
   final PageController pageController = PageController();
 
   @override

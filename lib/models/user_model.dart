@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'address.dart';
+
 class UserModel {
   UserModel(
       {this.id, this.name, this.email, this.password, this.confirmPassword});
@@ -10,6 +12,12 @@ class UserModel {
     email = document.data()['email'] as String;
     password = document.data()['password'] as String;
     confirmPassword = document.data()['confirmPassword'] as String;
+    if (document.data().containsKey('address')) {
+      if (document.data().containsKey('address')) {
+        address =
+            Address.fromMap(document.data()['address'] as Map<String, dynamic>);
+      }
+    }
   }
 
   String id;
@@ -18,6 +26,7 @@ class UserModel {
   String password;
   String confirmPassword;
   bool admin = false;
+  Address address;
 
   DocumentReference get firebaseRef =>
       FirebaseFirestore.instance.doc('users/$id');
@@ -32,7 +41,8 @@ class UserModel {
       'name': name,
       'email': email,
       'password': password,
-      'confirmPassword': confirmPassword
+      'confirmPassword': confirmPassword,
+      if (address != null) 'address': address.toMap()
     };
   }
 
@@ -41,5 +51,10 @@ class UserModel {
   @override
   String toString() {
     return 'UserModel{id: $id, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, admin: $admin}';
+  }
+
+  void setAddress(Address address) {
+    this.address = address;
+    saveData();
   }
 }

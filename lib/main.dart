@@ -4,6 +4,7 @@ import 'package:app_loja_virtual/models/user_manager.dart';
 import 'package:app_loja_virtual/screens/address/address_screen.dart';
 import 'package:app_loja_virtual/screens/base/base_screen.dart';
 import 'package:app_loja_virtual/screens/cart/cart_screen.dart';
+import 'package:app_loja_virtual/screens/checkout/checkout_screen.dart';
 import 'package:app_loja_virtual/screens/edit_product/edit_product_screen.dart';
 import 'package:app_loja_virtual/screens/login/login_screen.dart';
 import 'package:app_loja_virtual/screens/product/product_screen.dart';
@@ -83,9 +84,11 @@ class MyApp extends StatelessWidget {
             case '/login':
               return MaterialPageRoute(builder: (_) => LoginScreen());
             case '/base':
-              return MaterialPageRoute(builder: (_) => LoginScreen());
+              return MaterialPageRoute(
+                  builder: (_) => LoginScreen(), settings: settings);
             case '/cart':
-              return MaterialPageRoute(builder: (_) => const CartScreen());
+              return MaterialPageRoute(
+                  builder: (_) => const CartScreen(), settings: settings);
             case '/address':
               return MaterialPageRoute(builder: (_) => const AddressScreen());
             case '/edit_product':
@@ -99,8 +102,12 @@ class MyApp extends StatelessWidget {
             case '/select_product':
               return MaterialPageRoute(
                   builder: (_) => const SelectProductScreen());
+            case '/checkout':
+              return MaterialPageRoute(builder: (_) => CheckoutScreen());
+            case '/base':
             default:
-              return MaterialPageRoute(builder: (_) => LoginScreen());
+              return MaterialPageRoute(
+                  builder: (_) => BaseScreen(), settings: settings);
           }
         },
       ),

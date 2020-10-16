@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 class CartProduct extends ChangeNotifier {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  CartProduct.fromProduct(this.product) {
+  CartProduct.fromProduct(this._product) {
     id = product.id;
     productId = product.id;
     quantity = 1;
@@ -19,15 +19,22 @@ class CartProduct extends ChangeNotifier {
     size = document.data()['size'] as String;
     firestore.doc('products/$productId').get().then((doc) {
       product = Product.fromDocument(doc);
-      notifyListeners();
     });
   }
 
-  Product product;
+  //Product product;
   String id;
   String productId;
   String size;
   int quantity;
+  num fixedPrice;
+
+  Product _product;
+  Product get product => _product;
+  set product(Product value) {
+    _product = value;
+    notifyListeners();
+  }
 
   ItemSize get itemSize {
     if (product == null) return null;
@@ -46,6 +53,15 @@ class CartProduct extends ChangeNotifier {
       'productId': productId,
       'quantity': quantity,
       'size': size,
+    };
+  }
+
+  Map<String, dynamic> toOrderItemMap() {
+    return {
+      'productId': productId,
+      'quantity': quantity,
+      'size': size,
+      'fixedPrice': fixedPrice ?? unitPrice
     };
   }
 

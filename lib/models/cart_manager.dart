@@ -190,4 +190,12 @@ class CartManager extends ChangeNotifier {
     debugPrint('deliveryPrice $deliveryPrice');
     return true;
   }
+
+  void clear() {
+    for (final cartProduct in items) {
+      user.cartReference.doc(cartProduct.id).delete();
+    }
+    items.clear();
+    notifyListeners();
+  }
 }

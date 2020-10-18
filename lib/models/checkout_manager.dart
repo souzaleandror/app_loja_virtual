@@ -42,6 +42,7 @@ class CheckoutManager extends ChangeNotifier {
     cartManager.clear();
 
     //_getOrderId().then((value) => debugPrint(value.toString()));
+    onSuccess(order);
     loading = false;
   }
 

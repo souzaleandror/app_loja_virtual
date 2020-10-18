@@ -51,7 +51,7 @@ class CartManager extends ChangeNotifier {
 
   Future<void> _loadUserAddress() async {
     if (user.address != null &&
-        await calculateDelivery(address, address.latitude, address.longitude)) {
+        await calculateDelivery(user.address, user.address.latitude, user.address.longitude)) {
       address = user.address;
       notifyListeners();
     }
@@ -61,8 +61,8 @@ class CartManager extends ChangeNotifier {
     try {
       final e = items.firstWhere((p) => p.stackable(product));
       e.increment();
-    } catch (e, ex) {
-      debugPrint('NAO E ERROR $e >>> $ex');
+    } catch (e) {
+      //debugPrint('NAO E ERROR $e >>> $ex');
       final cartProduct = CartProduct.fromProduct(product);
       cartProduct.addListener(_onItemUpdate);
       items.add(cartProduct);

@@ -7,6 +7,7 @@ import 'package:app_loja_virtual/screens/home/home_screen.dart';
 import 'package:app_loja_virtual/screens/orders/orders_screen.dart';
 import 'package:app_loja_virtual/screens/products/products_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -18,6 +19,13 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   final PageController pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +60,7 @@ class _BaseScreenState extends State<BaseScreen> {
                 ),
                 if (userManager.adminEnabled) ...[
                   const AdminUsersScreen(),
-                  AdminOrdersScreen(),
+                  const AdminOrdersScreen(),
                 ]
               ],
             );

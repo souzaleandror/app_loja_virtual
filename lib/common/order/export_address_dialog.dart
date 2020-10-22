@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:app_loja_virtual/models/order.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
@@ -33,14 +31,14 @@ class ExportAddressDialog extends StatelessWidget {
             await GallerySaver.saveImage(file.path);
           },
           textColor: Theme.of(context).primaryColor,
-          child: Text('Exportar'),
+          child: const Text('Exportar'),
         ),
         FlatButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           textColor: Colors.red,
-          child: Text('Fechar'),
+          child: const Text('Fechar'),
         ),
       ],
     );

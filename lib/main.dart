@@ -93,7 +93,6 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           appBarTheme: const AppBarTheme(elevation: 0),
         ),
-        initialRoute: '/base',
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case '/signup':
@@ -122,7 +121,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                   builder: (_) =>
                       ConfirmationScreen(order: settings.arguments as Order));
-            case '/base':
+            case '/':
             default:
               return MaterialPageRoute(
                   builder: (_) => const BaseScreen(), settings: settings);

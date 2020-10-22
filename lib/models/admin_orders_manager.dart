@@ -10,7 +10,7 @@ class AdminOrdersManager extends ChangeNotifier {
 
   StreamSubscription _subscription;
 
-  List<Order> _orders = [];
+  final List<Order> _orders = [];
   UserModel userFilter;
   Timestamp timeFilter;
   List<Status> statusFilter = [Status.preparing];
@@ -38,7 +38,6 @@ class AdminOrdersManager extends ChangeNotifier {
 
     return output =
         output.where((o) => statusFilter.contains(o.status)).toList();
-    ;
   }
 
   void _listenToOrders() {

@@ -1,24 +1,27 @@
-import 'package:app_loja_virtual/models/order.dart';
+import 'package:app_loja_virtual/models/product.dart';
+import 'package:app_loja_virtual/models/product_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CancelOrderDialog extends StatelessWidget {
-  const CancelOrderDialog({Key key, this.order}) : super(key: key);
+class CancelProductDialog extends StatelessWidget {
+  const CancelProductDialog({Key key, this.product}) : super(key: key);
 
-  final Order order;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Cancelar ${order.formattedId}'),
+      title: Text('Cancelar ${product.name}'),
       content: const Text('Esta acao nao poderar ser desfeita!'),
       actions: [
         FlatButton(
           onPressed: () {
-            order.cancel();
+            context.read<ProductManager>().delete(product);
+            Navigator.of(context).pop();
             Navigator.of(context).pop();
           },
           textColor: Colors.red,
-          child: const Text('Cancelar Pedido'),
+          child: const Text('Deletar Produto'),
         ),
         FlatButton(
           onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:app_loja_virtual/common/cancel_product_dialog.dart';
 import 'package:app_loja_virtual/models/product.dart';
 import 'package:app_loja_virtual/models/product_manager.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,17 @@ class EditProductScreen extends StatelessWidget {
               ? const Text('Editar Produto')
               : const Text('Criar Produto'),
           centerTitle: true,
+          actions: [
+            if (editing)
+              IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (_) => CancelProductDialog(product: product));
+                },
+              )
+          ],
         ),
         backgroundColor: Colors.white,
         body: Form(

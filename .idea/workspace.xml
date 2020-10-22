@@ -31,32 +31,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d191a6a-1b66-4e8c-a708-6fd801e8457c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/order/cancel_order_dialog.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/order/export_address_dialog.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/order/order_tile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/admin_orders_manager.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/admin_orders/admin_orders_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/cancel_product_dialog.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_loja_virtual.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app_loja_virtual.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/.last_build_id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/order/cancel_order_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/order/cancel_order_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/order/export_address_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/order/export_address_dialog.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/order.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/order.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/admin_users/admin_users_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/admin_users/admin_users_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/admin_orders_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/admin_orders_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/cart_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/cart_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/product_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/section.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/confirmation/confirmation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/confirmation/confirmation_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/orders/components/order_product_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/order/order_product_tile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/orders/components/order_tile.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/orders/orders_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/orders/orders_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/cart/components/cart_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/cart/components/cart_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/checkout/checkout_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/checkout_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/edit_product/edit_product_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/edit_product/edit_product_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/product/product_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/product/product_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/products/components/product_list_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/products/components/product_list_tile.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,21 +78,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/common/order" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/common/order" />
       <recent name="$PROJECT_DIR$/lib/common" />
+      <recent name="$PROJECT_DIR$/lib/common/order" />
       <recent name="$PROJECT_DIR$/lib/common/custom_drawer" />
       <recent name="$PROJECT_DIR$/android/app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/common/order" />
+      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -130,10 +121,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1602943776540">
+    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1603405226875">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1602943776540" />
+    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1603405226875" />
     <state x="227" y="196" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602880020510">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -147,26 +138,26 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877@0.23.1440.877" timestamp="1603404025653" />
-    <state width="1014" height="146" key="GridCell.Tab.0.bottom" timestamp="1603319111453">
+    <state width="1014" height="247" key="GridCell.Tab.0.bottom" timestamp="1603407742778">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1014" height="146" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603319111453" />
-    <state width="1014" height="146" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603313945096" />
-    <state width="1014" height="146" key="GridCell.Tab.0.center" timestamp="1603319111452">
+    <state width="1014" height="247" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603407742778" />
+    <state width="1014" height="247" key="GridCell.Tab.0.center" timestamp="1603407742778">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1014" height="146" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603319111452" />
-    <state width="1014" height="146" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603313945095" />
-    <state width="1014" height="146" key="GridCell.Tab.0.left" timestamp="1603319111451">
+    <state width="1014" height="247" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603407742778" />
+    <state width="1014" height="247" key="GridCell.Tab.0.left" timestamp="1603407742777">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1014" height="146" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603319111451" />
-    <state width="1014" height="146" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603313945094" />
-    <state width="1014" height="146" key="GridCell.Tab.0.right" timestamp="1603319111452">
+    <state width="1014" height="247" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603407742777" />
+    <state width="1014" height="247" key="GridCell.Tab.0.right" timestamp="1603407742778">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1014" height="146" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603319111452" />
-    <state width="1014" height="146" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603313945095" />
+    <state width="1014" height="247" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603407742778" />
     <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1598738571264">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -214,10 +205,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="360" y="211" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1600600675502" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1603403726874">
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1603407815532">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1601672987398" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1603403726874" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1603407815532" />
   </component>
 </project>

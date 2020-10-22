@@ -12,7 +12,13 @@ class Product extends ChangeNotifier {
   final FirebaseStorage storage = FirebaseStorage.instance;
   StorageReference get storageRef => storage.ref().child('products').child(id);
 
-  Product({this.id, this.name, this.description, this.images, this.sizes}) {
+  Product(
+      {this.id,
+      this.name,
+      this.description,
+      this.images,
+      this.sizes,
+      this.deleted = false}) {
     images = images ?? [];
     sizes = sizes ?? [];
   }
@@ -25,6 +31,7 @@ class Product extends ChangeNotifier {
     sizes = (document.data()['sizes'] as List<dynamic> ?? [])
         .map((s) => ItemSize.fromMap(s as Map<String, dynamic>))
         .toList();
+    deleted = (document.data()['deleted'] ?? false) as bool;
 
     debugPrint(sizes.toString());
   }
@@ -37,6 +44,7 @@ class Product extends ChangeNotifier {
   List<dynamic> newImages;
 
   ItemSize _selectedSize;
+  bool deleted;
 
   ItemSize get selectedSize => _selectedSize;
 
@@ -55,7 +63,8 @@ class Product extends ChangeNotifier {
   num get basePrice {
     num lowest = double.infinity;
     for (final size in sizes) {
-      if (size.price < lowest && size.hasStock) {
+      //if (size.price < lowest && size.hasStock) {
+      if (size.price < lowest) {
         lowest = size.price;
       }
     }
@@ -70,7 +79,9 @@ class Product extends ChangeNotifier {
     return stock;
   }
 
-  bool get hasStock => totalStock > 0;
+  bool get hasStock {
+    return totalStock > 0 && !deleted;
+  }
 
   ItemSize findSize(String name) {
     try {
@@ -83,12 +94,12 @@ class Product extends ChangeNotifier {
 
   Product clone() {
     return Product(
-      id: id,
-      name: name,
-      description: description,
-      images: List.from(images),
-      sizes: sizes.map((size) => size.clone()).toList(),
-    );
+        id: id,
+        name: name,
+        description: description,
+        images: List.from(images),
+        sizes: sizes.map((size) => size.clone()).toList(),
+        deleted: deleted);
   }
 
   List<Map<String, dynamic>> exportSizeList() {
@@ -102,7 +113,8 @@ class Product extends ChangeNotifier {
     final Map<String, dynamic> data = {
       'name': name,
       'description': description,
-      'sizes': exportSizeList()
+      'sizes': exportSizeList(),
+      'deleted': false
     };
 
     if (id == null) {
@@ -145,7 +157,7 @@ class Product extends ChangeNotifier {
     }
 
     for (final image in images) {
-      if (!newImages.contains(image)) {
+      if (!newImages.contains(image) && image.contains('firebase')) {
         try {
           final ref = await storage.getReferenceFromUrl(image);
           await ref.delete();
@@ -160,6 +172,10 @@ class Product extends ChangeNotifier {
     images = updateImages;
 
     _loading = false;
+  }
+
+  void delete() {
+    firestoreRef.update({'deleted': true});
   }
 
   @override

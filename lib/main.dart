@@ -17,6 +17,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'models/admin_orders_manager.dart';
 import 'models/admin_users_manager.dart';
 import 'models/home_manager.dart';
 import 'models/order.dart';
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
           create: (_) => OrdersManager(),
           lazy: false,
           update: (_, userManager, ordersManager) =>
-          ordersManager..updateUser(userManager.user),
+              ordersManager..updateUser(userManager.user),
         ),
         ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
           create: (_) => AdminUsersManager(),
@@ -75,17 +76,23 @@ class MyApp extends StatelessWidget {
           update: (_, userManager, adminUsersManager) =>
               adminUsersManager..updateUser(userManager),
         ),
-
+        ChangeNotifierProxyProvider<UserManager, AdminOrdersManager>(
+          create: (_) => AdminOrdersManager(),
+          lazy: false,
+          update: (_, userManager, adminOrdersManager) => adminOrdersManager
+            ..updateAdmin(adminEnabled: userManager.adminEnabled),
+        ),
       ],
       child: MaterialApp(
         title: 'Loja Virtual',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            primaryColor: const Color.fromARGB(255, 4, 125, 141),
-            scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
-            primarySwatch: Colors.blue,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            appBarTheme: const AppBarTheme(elevation: 0),),
+          primaryColor: const Color.fromARGB(255, 4, 125, 141),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          appBarTheme: const AppBarTheme(elevation: 0),
+        ),
         initialRoute: '/base',
         onGenerateRoute: (settings) {
           switch (settings.name) {
@@ -112,7 +119,9 @@ class MyApp extends StatelessWidget {
             case '/checkout':
               return MaterialPageRoute(builder: (_) => CheckoutScreen());
             case '/confirmation':
-              return MaterialPageRoute(builder: (_) => ConfirmationScreen(order: settings.arguments as Order));
+              return MaterialPageRoute(
+                  builder: (_) =>
+                      ConfirmationScreen(order: settings.arguments as Order));
             case '/base':
             default:
               return MaterialPageRoute(

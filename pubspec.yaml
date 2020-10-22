@@ -42,6 +42,9 @@ dependencies:
   dio: ^3.0.10
   brasil_fields: ^0.4.0
   geolocator: ^6.0.0+4
+  sliding_up_panel: ^1.0.2
+  gallery_saver: ^2.0.1
+  screenshot: ^0.2.0
 
 dev_dependencies:
   flutter_test:

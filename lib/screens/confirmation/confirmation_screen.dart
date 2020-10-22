@@ -1,6 +1,5 @@
-
+import 'package:app_loja_virtual/common/order/order_product_tile.dart';
 import 'package:app_loja_virtual/models/order.dart';
-import 'package:app_loja_virtual/screens/orders/components/order_product_tile.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmationScreen extends StatelessWidget {
@@ -11,7 +10,6 @@ class ConfirmationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: const Text('Pedido Confirmado'),
         centerTitle: true,
@@ -46,7 +44,7 @@ class ConfirmationScreen extends StatelessWidget {
                 ),
               ),
               Column(
-                children: order.items.map((e){
+                children: order.items.map((e) {
                   return OrderProductTile(cartProduct: e);
                 }).toList(),
               )

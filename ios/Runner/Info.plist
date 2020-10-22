@@ -47,5 +47,6 @@
 	<string>Acessar camera para buscar imagem</string>
 	<key>NSMicrophoneUsageDescription</key>
     <string>Acessar galeria para buscar imagem</string>
+
 </dict>
 </plist>

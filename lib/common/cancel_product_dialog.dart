@@ -17,8 +17,8 @@ class CancelProductDialog extends StatelessWidget {
         FlatButton(
           onPressed: () {
             context.read<ProductManager>().delete(product);
-            Navigator.of(context).pop();
-            Navigator.of(context).pop();
+            Navigator.of(context)
+                .popUntil((route) => route.settings.name == '/');
           },
           textColor: Colors.red,
           child: const Text('Deletar Produto'),

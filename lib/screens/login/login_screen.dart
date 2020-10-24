@@ -2,6 +2,7 @@ import 'package:app_loja_virtual/helpers/validators.dart';
 import 'package:app_loja_virtual/models/user_manager.dart';
 import 'package:app_loja_virtual/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -41,6 +42,16 @@ class LoginScreen extends StatelessWidget {
               key: formKey,
               child: Consumer<UserManager>(
                 builder: (context, userManager, child) {
+                  if (userManager.loadingFace) {
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(
+                            Theme.of(context).primaryColor),
+                      ),
+                    );
+                  }
+
                   return ListView(
                     padding: const EdgeInsets.all(10),
                     shrinkWrap: true,
@@ -79,53 +90,72 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      SizedBox(
-                        height: 44,
-                        child: RaisedButton(
-                          onPressed: userManager.loading
-                              ? null
-                              : () async {
-                                  if (formKey.currentState.validate()) {
-                                    debugPrint(emailController.text);
-                                    debugPrint(passController.text);
-                                    //FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passController.text);
-                                    //context.read<UserManager>().signIn(
-                                    userManager.signIn(
-                                      user: UserModel(
-                                          email: emailController.text,
-                                          password: passController.text),
-                                      onFail: (e) {
-                                        debugPrint(e.toString());
-                                        scaffoldKey.currentState.showSnackBar(
-                                          SnackBar(
-                                            content:
-                                                Text('Falha ao entrar: $e'),
-                                            backgroundColor: Colors.red,
-                                          ),
-                                        );
-                                      },
-                                      onSuccess: () {
-                                        debugPrint('success');
-                                        // TODO: FECHAR ALGUMA COISA
-                                        Navigator.of(context).pop();
-                                      },
-                                    );
-                                  }
-                                },
-                          color: Theme.of(context).primaryColor,
-                          disabledColor:
-                              Theme.of(context).primaryColor.withAlpha(100),
-                          textColor: Colors.white,
-                          child: userManager.loading
-                              ? const CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Colors.white),
-                                )
-                              : const Text(
-                                  'Entrar',
-                                  style: TextStyle(fontSize: 14),
+                      RaisedButton(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        onPressed: userManager.loading
+                            ? null
+                            : () async {
+                                if (formKey.currentState.validate()) {
+                                  debugPrint(emailController.text);
+                                  debugPrint(passController.text);
+                                  //FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text, password: passController.text);
+                                  //context.read<UserManager>().signIn(
+                                  userManager.signIn(
+                                    user: UserModel(
+                                        email: emailController.text,
+                                        password: passController.text),
+                                    onFail: (e) {
+                                      debugPrint(e.toString());
+                                      scaffoldKey.currentState.showSnackBar(
+                                        SnackBar(
+                                          content: Text('Falha ao entrar: $e'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    },
+                                    onSuccess: () {
+                                      debugPrint('success');
+                                      // TODO: FECHAR ALGUMA COISA
+                                      Navigator.of(context).pop();
+                                    },
+                                  );
+                                }
+                              },
+                        color: Theme.of(context).primaryColor,
+                        disabledColor:
+                            Theme.of(context).primaryColor.withAlpha(100),
+                        textColor: Colors.white,
+                        child: userManager.loading
+                            ? const CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : const Text(
+                                'Entrar',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                      ),
+                      SignInButton(
+                        Buttons.Facebook,
+                        onPressed: () {
+                          userManager.facebookLogin(
+                            onFail: (e) {
+                              debugPrint(e.toString());
+                              scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text('Falha ao entrar: $e'),
+                                  backgroundColor: Colors.red,
                                 ),
-                        ),
+                              );
+                            },
+                            onSuccess: () {
+                              debugPrint('success');
+                              // TODO: FECHAR ALGUMA COISA
+                              Navigator.of(context).pop();
+                            },
+                          );
+                        },
+                        text: 'Entrar com Facebook',
                       ),
                     ],
                   );

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class UserManager extends ChangeNotifier {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -19,6 +20,29 @@ class UserManager extends ChangeNotifier {
   bool _loading = false;
   bool get loading => _loading;
   bool get isLoggedIn => user != null;
+
+  set loading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
+  void setLoading({bool value}) {
+    _loading = value;
+    notifyListeners();
+  }
+
+  bool _loadingFace = false;
+  bool get loadingFace => _loadingFace;
+
+  set loadingFace(bool value) {
+    _loadingFace = value;
+    notifyListeners();
+  }
+
+  void setLoadingFace({bool value}) {
+    _loadingFace = value;
+    notifyListeners();
+  }
 
   Future<void> signIn(
       {UserModel user, Function onFail, Function onSuccess}) async {
@@ -98,20 +122,44 @@ class UserManager extends ChangeNotifier {
     loading = false;
   }
 
-  set loading(bool value) {
-    _loading = value;
-    notifyListeners();
-  }
-
-  void setLoading({bool value}) {
-    _loading = value;
-    notifyListeners();
-  }
-
   Future<void> signOut() async {
     auth.signOut();
     user = null;
     notifyListeners();
+  }
+
+  Future<void> facebookLogin({Function onFail, Function onSuccess}) async {
+    loadingFace = true;
+    final result = await FacebookLogin().logIn(['email', 'public_profile']);
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final credential =
+            FacebookAuthProvider.credential(result.accessToken.token);
+
+        final authResult = await auth.signInWithCredential(credential);
+
+        if (authResult.user != null) {
+          final firebaseUser = auth.currentUser;
+
+          user = UserModel(
+              id: firebaseUser.uid,
+              name: firebaseUser.displayName,
+              email: firebaseUser.email);
+
+          await user.saveData();
+        }
+        onSuccess();
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        debugPrint('User cancel login com facebook');
+        break;
+      case FacebookLoginStatus.error:
+        onFail(result.errorMessage);
+        break;
+      default:
+        break;
+    }
+    loadingFace = false;
   }
 
   bool get adminEnabled => user != null && user.admin;

@@ -31,20 +31,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d191a6a-1b66-4e8c-a708-6fd801e8457c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/helpers/extensions.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/store.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/stores_manager.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/stores/components/store_card.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/stores/stores_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_loja_virtual.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app_loja_virtual.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/cancel_product_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/cancel_product_dialog.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/user_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/signup/signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/signup/signup_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/base/base_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,12 +53,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[42000e2ece6a8483]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_2_API_24]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Dart File" />
         <option value="valueResourceFile" />
+        <option value="Dart File" />
       </list>
     </option>
   </component>
@@ -134,30 +135,31 @@
     </state>
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1601412887399" />
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1601064520230" />
-    <state x="102" y="123" width="1037" height="677" key="AVDManager" timestamp="1603557054778">
+    <state x="102" y="123" width="1037" height="677" key="AVDManager" timestamp="1603918999158">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603918999158" />
     <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877@0.23.1440.877" timestamp="1603557054778" />
-    <state width="1014" height="247" key="GridCell.Tab.0.bottom" timestamp="1603559260152">
+    <state width="1014" height="198" key="GridCell.Tab.0.bottom" timestamp="1603841959101">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="247" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603408432415" />
-    <state width="1014" height="247" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603559260152" />
-    <state width="1014" height="247" key="GridCell.Tab.0.center" timestamp="1603559260151">
+    <state width="1014" height="198" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603841959101" />
+    <state width="1014" height="198" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603841016094" />
+    <state width="1014" height="198" key="GridCell.Tab.0.center" timestamp="1603841959099">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="247" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603408432414" />
-    <state width="1014" height="247" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603559260151" />
-    <state width="1014" height="247" key="GridCell.Tab.0.left" timestamp="1603559260151">
+    <state width="1014" height="198" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603841959099" />
+    <state width="1014" height="198" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603841016093" />
+    <state width="1014" height="198" key="GridCell.Tab.0.left" timestamp="1603841959096">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="247" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603408432414" />
-    <state width="1014" height="247" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603559260151" />
-    <state width="1014" height="247" key="GridCell.Tab.0.right" timestamp="1603559260152">
+    <state width="1014" height="198" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603841959096" />
+    <state width="1014" height="198" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603841016093" />
+    <state width="1014" height="198" key="GridCell.Tab.0.right" timestamp="1603841959100">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="247" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603408432415" />
-    <state width="1014" height="247" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603559260152" />
+    <state width="1014" height="198" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603841959100" />
+    <state width="1014" height="198" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603841016094" />
     <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1598738571264">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -205,10 +207,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="360" y="211" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1600600675502" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1603558627716">
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1603841039832">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1601672987398" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1603558627716" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1603841039832" />
   </component>
 </project>

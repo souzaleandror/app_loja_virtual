@@ -75,6 +75,7 @@ class StoreCard extends StatelessWidget {
       //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Column(
         children: <Widget>[
+          // ignore: sized_box_for_whitespace
           Container(
             height: 140,
             child: Stack(

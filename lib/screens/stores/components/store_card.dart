@@ -54,7 +54,7 @@ class StoreCard extends StatelessWidget {
                         },
                         title: Text(map.mapName),
                         leading: Image(
-                          image: map.icon,
+                          image: NetworkImage(map.icon),
                           width: 30,
                           height: 30,
                         ),

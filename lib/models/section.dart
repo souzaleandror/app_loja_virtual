@@ -11,7 +11,7 @@ class Section extends ChangeNotifier {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseStorage storage = FirebaseStorage.instance;
   DocumentReference get firestoreRef => firestore.doc('home/$id');
-  StorageReference get storageRef => storage.ref().child('home/$id');
+  Reference get storageRef => storage.ref().child('home/$id');
 
   Section({this.id, this.name, this.type, this.items}) {
     items = items ?? [];
@@ -91,10 +91,10 @@ class Section extends ChangeNotifier {
 
     for (final item in items) {
       if (item.image is File) {
-        final StorageUploadTask task =
+        final UploadTask task =
             storageRef.child(Uuid().v1()).putFile(item.image as File);
-        final StorageTaskSnapshot snapshot = await task.onComplete;
-        final String url = await snapshot.ref.getDownloadURL() as String;
+        //final StorageTaskSnapshot snapshot = await task.onComplete;
+        final String url = await task.snapshot.ref.getDownloadURL();
         item.image = url;
       }
     }
@@ -103,9 +103,9 @@ class Section extends ChangeNotifier {
       try {
         if (!items.contains(original) &&
             (original.image as String).contains('firebase')) {
-          final ref =
-              await storage.getReferenceFromUrl(original.image as String);
-          await ref.delete();
+          // final ref = await storage.getReferenceFromUrl(original.image as String);
+          // await ref.delete();
+          await storage.refFromURL(original.image.toString()).delete();
         }
       } catch (e, ex) {
         debugPrint("$e >> $ex");
@@ -124,8 +124,9 @@ class Section extends ChangeNotifier {
     for (final item in items) {
       if ((item.image as String).contains('firebase')) {
         try {
-          final ref = await storage.getReferenceFromUrl(item.image as String);
-          await ref.delete();
+          // final ref = await storage.getReferenceFromUrl(item.image as String);
+          // await ref.delete();
+          storage.refFromURL(item.image.toString()).delete();
         } catch (e, ex) {
           debugPrint("$e >>> $ex");
         }

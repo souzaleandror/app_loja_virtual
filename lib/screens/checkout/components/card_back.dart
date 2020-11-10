@@ -36,7 +36,6 @@ class CardBack extends StatelessWidget {
                     child: CardTextField(
                       title: 'code',
                       hint: '123',
-                      bold: false,
                       maxLength: 4,
                       textAlign: TextAlign.end,
                       textInputType: TextInputType.number,

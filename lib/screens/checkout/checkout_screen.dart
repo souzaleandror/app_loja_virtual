@@ -55,7 +55,7 @@ class CheckoutScreen extends StatelessWidget {
                   key: formKey,
                   child: ListView(
                     children: [
-                      CreditCardWidget(),
+                      const CreditCardWidget(),
                       PriceCard(
                         buttonText: 'Finalizar Pedido',
                         onTap: () {

@@ -51,7 +51,8 @@ class CartManager extends ChangeNotifier {
 
   Future<void> _loadUserAddress() async {
     if (user.address != null &&
-        await calculateDelivery(user.address, user.address.latitude, user.address.longitude)) {
+        await calculateDelivery(
+            user.address, user.address.latitude, user.address.longitude)) {
       address = user.address;
       notifyListeners();
     }
@@ -173,7 +174,8 @@ class CartManager extends ChangeNotifier {
     final base = doc.data()['base'] as num;
     final km = doc.data()['km'] as num;
 
-    double dis = distanceBetween(latStore, longStore, latitude, longitude);
+    double dis =
+        Geolocator.distanceBetween(latStore, longStore, latitude, longitude);
 
     debugPrint('Distance $dis');
 

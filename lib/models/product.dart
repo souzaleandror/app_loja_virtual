@@ -10,7 +10,7 @@ import 'item_size.dart';
 class Product extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseStorage storage = FirebaseStorage.instance;
-  StorageReference get storageRef => storage.ref().child('products').child(id);
+  Reference get storageRef => storage.ref().child('products').child(id);
 
   Product(
       {this.id,
@@ -148,10 +148,10 @@ class Product extends ChangeNotifier {
       if (images.contains(newImage)) {
         updateImages.add(newImage as String);
       } else {
-        final StorageUploadTask task =
+        final UploadTask task =
             storageRef.child(Uuid().v1()).putFile(newImage as File);
-        final StorageTaskSnapshot snapshot = await task.onComplete;
-        final String url = await snapshot.ref.getDownloadURL() as String;
+        //final TaskSnapshot snapshot = await task.onComplete;
+        final String url = await task.snapshot.ref.getDownloadURL();
         updateImages.add(url);
       }
     }
@@ -159,8 +159,9 @@ class Product extends ChangeNotifier {
     for (final image in images) {
       if (!newImages.contains(image) && image.contains('firebase')) {
         try {
-          final ref = await storage.getReferenceFromUrl(image);
-          await ref.delete();
+          // final ref = storage.refFromURL(image);
+          // await ref.delete();
+          await storage.refFromURL(image).delete();
         } catch (e, ex) {
           debugPrint('Falha ao tentar deletar $e >>> $ex');
         }

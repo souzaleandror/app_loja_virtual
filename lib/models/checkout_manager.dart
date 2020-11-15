@@ -1,5 +1,6 @@
-import 'package:app_loja_virtual/models/order.dart';
+import 'package:app_loja_virtual/models/credit_card.dart';
 import 'package:app_loja_virtual/models/product.dart';
+import 'package:app_loja_virtual/services/cielo_payment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,8 @@ import 'cart_manager.dart';
 class CheckoutManager extends ChangeNotifier {
   final FirebaseFirestore _firebase = FirebaseFirestore.instance;
   CartManager cartManager;
+
+  final CieloPayment cieloPayment = CieloPayment();
 
   bool _loading = false;
   bool get loading => _loading;
@@ -22,28 +25,39 @@ class CheckoutManager extends ChangeNotifier {
     debugPrint(cartManager.productsPrice.toString());
   }
 
-  Future<void> checkout({Function onStockFail, Function onSuccess}) async {
+  Future<void> checkout(
+      {CreditCard creditCard, Function onStockFail, Function onSuccess}) async {
     loading = true;
-    try {
-      _decrementStock();
-    } catch (e, ex) {
-      onStockFail(e);
-      debugPrint("$e >>> $ex");
-      loading = false;
-      return;
-    }
+
+    print(creditCard.toJson());
 
     final orderId = await _getOrderId();
 
-    final order = Order.fromCartManager(cartManager);
-    order.orderId = orderId.toString();
+    cieloPayment.authorize(
+      creditCard: creditCard,
+      price: cartManager.totalPrice,
+      orderId: orderId.toString(),
+      user: cartManager.user,
+    );
 
-    await order.save();
-    cartManager.clear();
-
-    //_getOrderId().then((value) => debugPrint(value.toString()));
-    onSuccess(order);
-    loading = false;
+    // try {
+    //   _decrementStock();
+    // } catch (e, ex) {
+    //   onStockFail(e);
+    //   debugPrint("$e >>> $ex");
+    //   loading = false;
+    //   return;
+    // }
+    //
+    // final order = Order.fromCartManager(cartManager);
+    // order.orderId = orderId.toString();
+    //
+    // await order.save();
+    // cartManager.clear();
+    //
+    // //_getOrderId().then((value) => debugPrint(value.toString()));
+    // onSuccess(order);
+    // loading = false;
   }
 
   // TODO: PROCESSAR O PAGAMENTO

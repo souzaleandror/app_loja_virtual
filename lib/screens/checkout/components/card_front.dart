@@ -1,3 +1,4 @@
+import 'package:app_loja_virtual/models/credit_card.dart';
 import 'package:app_loja_virtual/screens/checkout/components/card_text_field.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:credit_card_type_detector/credit_card_type_detector.dart';
@@ -11,7 +12,8 @@ class CardFront extends StatelessWidget {
       this.finished,
       this.numberFocus,
       this.nameFocus,
-      this.dateFocus})
+      this.dateFocus,
+      this.creditCard})
       : super(key: key);
 
   final MaskTextInputFormatter dateFormatter = MaskTextInputFormatter(
@@ -21,6 +23,7 @@ class CardFront extends StatelessWidget {
   final FocusNode dateFocus;
   final FocusNode nameFocus;
   final VoidCallback finished;
+  final CreditCard creditCard;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,7 @@ class CardFront extends StatelessWidget {
                     onSubmitted: (_) {
                       dateFocus.requestFocus();
                     },
+                    onSaved: creditCard.setNumber,
                   ),
                   CardTextField(
                     title: 'Validade',
@@ -76,6 +80,7 @@ class CardFront extends StatelessWidget {
                     onSubmitted: (_) {
                       nameFocus.requestFocus();
                     },
+                    onSaved: creditCard.setExpirationDate,
                   ),
                   CardTextField(
                     title: 'Titular',
@@ -92,6 +97,7 @@ class CardFront extends StatelessWidget {
                     onSubmitted: (_) {
                       finished();
                     },
+                    onSaved: creditCard.setHolder,
                   ),
                 ],
               ),

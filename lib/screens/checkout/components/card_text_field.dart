@@ -14,7 +14,8 @@ class CardTextField extends StatelessWidget {
       this.textAlign = TextAlign.start,
       this.cardBack = false,
       this.focusNode,
-      this.onSubmitted})
+      this.onSubmitted,
+      this.onSaved})
       : textInputAction =
             onSubmitted == null ? TextInputAction.done : TextInputAction.next,
         super(key: key);
@@ -31,10 +32,12 @@ class CardTextField extends StatelessWidget {
   final FocusNode focusNode;
   final Function(String) onSubmitted;
   final TextInputAction textInputAction;
+  final FormFieldSetter<String> onSaved;
 
   @override
   Widget build(BuildContext context) {
     return FormField<String>(
+      onSaved: onSaved,
       initialValue: '',
       validator: validator,
       builder: (state) {

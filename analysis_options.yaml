@@ -3,3 +3,4 @@ include: package:lint/analysis_options_package.yaml
 linter:
   rules:
     always_put_required_named_parameters_first: false
+    use_setters_to_change_properties: false

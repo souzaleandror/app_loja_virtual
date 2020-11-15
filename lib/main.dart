@@ -13,8 +13,6 @@ import 'package:app_loja_virtual/screens/login/login_screen.dart';
 import 'package:app_loja_virtual/screens/product/product_screen.dart';
 import 'package:app_loja_virtual/screens/select_product/select_product_screen.dart';
 import 'package:app_loja_virtual/screens/signup/signup_screen.dart';
-import 'package:app_loja_virtual/services/cepaberto_service.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,29 +28,29 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   //CEP CERTO
-  CepAbertoService()
-      .getAddressFromCep('05540-100')
-      .then((address) => debugPrint(address.toString()));
-  //CEP errado
-  CepAbertoService()
-      .getAddressFromCep('123123123')
-      .then((address) => debugPrint(address.toString()));
+  //CepAbertoService()
+  //     .getAddressFromCep('05540-100')
+  //     .then((address) => debugPrint(address.toString()));
+  // //CEP errado
+  // CepAbertoService()
+  //     .getAddressFromCep('123123123')
+  //     .then((address) => debugPrint(address.toString()));
 
-  final response =
-      await FirebaseFunctions.instance.httpsCallable('helloWorld2').call();
-
-  debugPrint(response.data.toString());
-
-  final response2 =
-      await FirebaseFunctions.instance.httpsCallable('getUserData').call();
-
-  debugPrint(response2.data.toString());
-
-  final response3 = await FirebaseFunctions.instance
-      .httpsCallable('addMessage')
-      .call({'teste': 'tess123'});
-
-  debugPrint(response3.data.toString());
+  // final response =
+  //     await FirebaseFunctions.instance.httpsCallable('helloWorld2').call();
+  //
+  // debugPrint(response.data.toString());
+  //
+  // final response2 =
+  //     await FirebaseFunctions.instance.httpsCallable('getUserData').call();
+  //
+  // debugPrint(response2.data.toString());
+  //
+  // final response3 = await FirebaseFunctions.instance
+  //     .httpsCallable('addMessage')
+  //     .call({'teste': 'tess123'});
+  //
+  // debugPrint(response3.data.toString());
 
   runApp(const MyApp());
 }

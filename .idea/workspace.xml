@@ -31,21 +31,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d191a6a-1b66-4e8c-a708-6fd801e8457c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/credit_card.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/checkout/components/cpf_field.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/cielo_payment.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_loja_virtual.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app_loja_virtual.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/functions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/temp.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/cart_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/cart_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/section.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/checkout_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/checkout_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/product_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/product_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/checkout/checkout_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/checkout_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/checkout/components/card_back.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/components/card_back.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/stores/components/store_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/stores/components/store_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/checkout/components/card_front.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/components/card_front.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/checkout/components/card_text_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/components/card_text_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/checkout/components/credit_card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/checkout/components/credit_card_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,10 +129,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1603405226875">
+    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1605133332979">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1603405226875" />
+    <state x="515" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1605133332979" />
     <state x="227" y="196" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1605043619081">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -136,31 +143,31 @@
     </state>
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1601412887399" />
     <state x="458" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1601064520230" />
-    <state x="102" y="123" width="1037" height="677" key="AVDManager" timestamp="1605045878001">
+    <state x="102" y="123" width="1037" height="677" key="AVDManager" timestamp="1605438184231">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605045878001" />
-    <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877@0.23.1440.877" timestamp="1604241181409" />
-    <state width="1014" height="356" key="GridCell.Tab.0.bottom" timestamp="1605048130231">
+    <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605438184231" />
+    <state x="102" y="123" width="1037" height="677" key="AVDManager/0.23.1440.877@0.23.1440.877" timestamp="1605360337961" />
+    <state width="1014" height="315" key="GridCell.Tab.0.bottom" timestamp="1605443135634">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="356" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605048130231" />
-    <state width="1014" height="386" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1604958611519" />
-    <state width="1014" height="356" key="GridCell.Tab.0.center" timestamp="1605048130230">
+    <state width="1014" height="315" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605437811708" />
+    <state width="1014" height="315" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1605443135634" />
+    <state width="1014" height="315" key="GridCell.Tab.0.center" timestamp="1605443135633">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="356" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605048130230" />
-    <state width="1014" height="386" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1604958611518" />
-    <state width="1014" height="356" key="GridCell.Tab.0.left" timestamp="1605048130230">
+    <state width="1014" height="315" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605437811707" />
+    <state width="1014" height="315" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1605443135633" />
+    <state width="1014" height="315" key="GridCell.Tab.0.left" timestamp="1605443135633">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="356" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605048130230" />
-    <state width="1014" height="386" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1604958611518" />
-    <state width="1014" height="356" key="GridCell.Tab.0.right" timestamp="1605048130231">
+    <state width="1014" height="315" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605437811707" />
+    <state width="1014" height="315" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1605443135633" />
+    <state width="1014" height="315" key="GridCell.Tab.0.right" timestamp="1605443135634">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1014" height="356" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605048130231" />
-    <state width="1014" height="386" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1604958611518" />
+    <state width="1014" height="315" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605437811708" />
+    <state width="1014" height="315" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1605443135634" />
     <state width="1398" height="285" key="GridCell.Tab.1.bottom" timestamp="1598738571264">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -195,11 +202,11 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="460" y="115" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.877@0.23.1440.877" timestamp="1603027911478" />
-    <state x="372" y="218" width="852" height="550" key="find.popup" timestamp="1604242857456">
+    <state x="372" y="218" width="695" height="490" key="find.popup" timestamp="1605219813332">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="372" y="218" width="695" height="490" key="find.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1603922666083" />
-    <state x="372" y="218" width="852" height="550" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1604242857456" />
+    <state x="372" y="218" width="695" height="490" key="find.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605219813332" />
+    <state x="372" y="218" width="852" height="550" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1605218503850" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1601803006093">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -208,10 +215,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="360" y="211" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1600600675502" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1605041924100">
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1605441174999">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605041924100" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1604956989412" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/1440.23.1920.1057@0.23.1440.877" timestamp="1605387878084" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1605441174999" />
   </component>
 </project>

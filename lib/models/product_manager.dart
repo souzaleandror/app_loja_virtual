@@ -42,8 +42,10 @@ class ProductManager extends ChangeNotifier {
       debugPrint('debug: ${doc.data()}');
     }
 
-    allProducts =
-        snapProducts.docs.map((d) => Product.fromDocument(d)).toList();
+    allProducts = snapProducts.docs.map((d) {
+      print(d.data());
+      return Product.fromDocument(d);
+    }).toList();
 
     notifyListeners();
   }

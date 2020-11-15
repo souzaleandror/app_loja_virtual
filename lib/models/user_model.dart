@@ -11,6 +11,7 @@ class UserModel {
     name = document.data()['name'] as String;
     email = document.data()['email'] as String;
     password = document.data()['password'] as String;
+    cpf = document.data()['cpf'] as String;
     confirmPassword = document.data()['confirmPassword'] as String;
     if (document.data().containsKey('address')) {
       if (document.data().containsKey('address')) {
@@ -25,6 +26,7 @@ class UserModel {
   String email;
   String password;
   String confirmPassword;
+  String cpf;
   bool admin = false;
   Address address;
 
@@ -42,7 +44,8 @@ class UserModel {
       'email': email,
       'password': password,
       'confirmPassword': confirmPassword,
-      if (address != null) 'address': address.toMap()
+      if (address != null) 'address': address.toMap(),
+      if (cpf != null) 'cpf': cpf
     };
   }
 
@@ -55,6 +58,11 @@ class UserModel {
 
   void setAddress(Address address) {
     this.address = address;
+    saveData();
+  }
+
+  void setCpf(String cpf) {
+    this.cpf = cpf;
     saveData();
   }
 }

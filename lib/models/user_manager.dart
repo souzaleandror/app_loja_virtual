@@ -54,6 +54,7 @@ class UserManager extends ChangeNotifier {
 
       //await Future.delayed(Duration(seconds: 4));
       await _loadCurrentUser(firebaseUser: result.user);
+
       //this.user = result.user;
       debugPrint(result.user.uid);
       onSuccess();
@@ -80,6 +81,8 @@ class UserManager extends ChangeNotifier {
       final DocumentSnapshot docUser =
           await firestore.collection('users').doc(currentUser.uid).get();
       user = UserModel.fromDocument(docUser);
+
+      await user.saveToken();
 
       final docAdmin =
           await firestore.collection('admins').doc(docUser.id).get();
@@ -110,6 +113,8 @@ class UserManager extends ChangeNotifier {
       user.id = result.user.uid;
       this.user = user;
       await user.saveData();
+
+      await user.saveToken();
       debugPrint(result.user.uid);
       onSuccess();
     } on PlatformException catch (e, ex) {
@@ -147,6 +152,7 @@ class UserManager extends ChangeNotifier {
               email: firebaseUser.email);
 
           await user.saveData();
+          await user.saveToken();
         }
         onSuccess();
         break;

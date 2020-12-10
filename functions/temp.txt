@@ -1,0 +1,35 @@
+https://developercielo.github.io/manual/cielo-ecommerce
+
+Entao,
+Para usuario normal, voce pode usar: user@user.com, senha:123123
+Para usuario admin, voce pode usar: admin@admin.com, senha:123123
+
+Cartao de credito, quando for realizar compra:
+3673 5735 7374 3237
+4768 4723 6473 7347
+
+4334 5635 2262 4621
+4334 5635 2262 4623
+
+Cpf: 
+914.479.250-68
+455.571.430-09
+
+cep:
+36420000
+
+cd functions
+npm install --save cielo
+npm fund
+npm audit fix
+firebase functions:config:set cielo.merchantid="6dba0cc7-1bfd-41a2-a5e9-5d05da103849"
+firebase functions:config:set cielo.merchantkey="5zgDi9boavJyUgwnsz53lbbcJvCEsFKh6+rxYDwTGFQ="
+
+firebase functions:config:get
+
+firebase functions:log
+firebase deploy --only functions
+
+firebase functions:log --only authorizeCreditCard
+
+Unhandled error RangeError: Maximum call stack size exceeded  at Uint8Array.get

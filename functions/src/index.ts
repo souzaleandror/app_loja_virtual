@@ -86,6 +86,8 @@ export const authorizeCreditCard = functions.https.onCall(async (data, context) 
             };
     }
 
+    try {
+
     const saleData: TransactionCreditCardRequestModel = {
         merchantOrderId: data.merchantOrderId,
         customer: {
@@ -122,9 +124,10 @@ export const authorizeCreditCard = functions.https.onCall(async (data, context) 
         }
     }
 
-    try {
+        console.log(saleData);
         const transaction = await cielo.creditCard.transaction(saleData);
-
+        console.log(transaction);
+        return saleData;
         if(transaction.payment.status === 1){
             return {
                 "success": true,
@@ -207,7 +210,75 @@ export const addMessage = functions.https.onCall( async (data, context) => {
     return {"success": snapshot.id};
 });
 
-export const onNewOrder = functions.firestore.document("/orders/{orderId}").onCreate((snapshot, context) => {
+export const onNewOrder = functions.firestore.document("/orders/{orderId}").onCreate(async (snapshot, context) => {
     const orderId = context.params.orderId;
     console.log(orderId);
+
+    const querySnapshot = await admin.firestore().collection('admins').get();
+    
+    const adminsIds = querySnapshot.docs.map(doc => doc.id);
+
+    let adminsTokens: string[] = [];
+
+    for(let i = 0; i < adminsIds.length; i++) {
+        const tokensAdmin: string[] = await getDeviceTokens(adminsIds[i]);
+        adminsTokens = adminsTokens.concat(tokensAdmin);
+    }
+
+    console.log(orderId, adminsTokens);
+    await sendPushFCM(
+        adminsTokens,
+        'Novo Pedido',
+        'Nova venda realizada. Pedido: ' + orderId,
+    );
 });
+
+const orderStatus = new Map([
+    [0, "Cancelado"],
+    [1, "Em Preparacao"],
+    [2, "Em Transporte"],
+    [3, "Entregue"],
+])
+
+export const onOrderStatusChanged = functions.firestore.document("/orders/{orderId}").onUpdate(async (snapshot, context) => {
+    console.log('Without Tokens1');
+    console.log(context.params.orderId);
+    const beforeStatus = snapshot.before.data().status;
+    const afterStatus = snapshot.after.data().status;
+    console.log(beforeStatus);
+    console.log(afterStatus);
+    console.log('Without Tokens2');
+
+    if(beforeStatus !== afterStatus) {
+        const tokensUser = await getDeviceTokens(snapshot.after.data().userId);
+
+        await sendPushFCM(
+            tokensUser,
+            'Pedido:' + context.params.orderId,
+            'Status atualizado para: ' + orderStatus.get(afterStatus)
+        )
+    }
+});
+
+async function getDeviceTokens(uid: string) {
+    const querySnapshot = await admin.firestore().collection("users").doc(uid).collection("tokens").get();
+    const tokens = querySnapshot.docs.map(doc => doc.id);
+
+    return tokens;
+}
+
+async function sendPushFCM(tokens: string[], title: string, message: string){
+    if(tokens.length > 0) {
+        const payload = {
+            notification: {
+                title: title,
+                body: message,
+                click_action: 'FLUTTER_NOTIFICATION_CLICK'
+            }
+        };
+
+        return admin.messaging().sendToDevice(tokens, payload);
+    } 
+    console.log('Without Tokens');
+    return;
+}

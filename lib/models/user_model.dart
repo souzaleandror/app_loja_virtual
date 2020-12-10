@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'address.dart';
 
@@ -51,6 +55,8 @@ class UserModel {
 
   CollectionReference get cartReference => firebaseRef.collection('cart');
 
+  CollectionReference get tokensReference => firebaseRef.collection('tokens');
+
   @override
   String toString() {
     return 'UserModel{id: $id, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, admin: $admin}';
@@ -64,5 +70,15 @@ class UserModel {
   void setCpf(String cpf) {
     this.cpf = cpf;
     saveData();
+  }
+
+  Future<void> saveToken() async {
+    final token = await FirebaseMessaging().getToken();
+    debugPrint("token: $token");
+    await tokensReference.doc(token).set({
+      'token': token,
+      'updatedAt': FieldValue.serverTimestamp(),
+      'platform': Platform.operatingSystem,
+    });
   }
 }

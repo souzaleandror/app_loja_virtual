@@ -1,4 +1,5 @@
 import 'package:app_loja_virtual/models/credit_card.dart';
+import 'package:app_loja_virtual/models/order.dart';
 import 'package:app_loja_virtual/models/product.dart';
 import 'package:app_loja_virtual/services/cielo_payment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -29,35 +30,35 @@ class CheckoutManager extends ChangeNotifier {
       {CreditCard creditCard, Function onStockFail, Function onSuccess}) async {
     loading = true;
 
-    print(creditCard.toJson());
+    //print(creditCard.toJson());
 
     final orderId = await _getOrderId();
 
-    cieloPayment.authorize(
-      creditCard: creditCard,
-      price: cartManager.totalPrice,
-      orderId: orderId.toString(),
-      user: cartManager.user,
-    );
+    // cieloPayment.authorize(
+    //   creditCard: creditCard,
+    //   price: cartManager.totalPrice,
+    //   orderId: orderId.toString(),
+    //   user: cartManager.user,
+    // );
 
-    // try {
-    //   _decrementStock();
-    // } catch (e, ex) {
-    //   onStockFail(e);
-    //   debugPrint("$e >>> $ex");
-    //   loading = false;
-    //   return;
-    // }
-    //
-    // final order = Order.fromCartManager(cartManager);
-    // order.orderId = orderId.toString();
-    //
-    // await order.save();
-    // cartManager.clear();
-    //
-    // //_getOrderId().then((value) => debugPrint(value.toString()));
-    // onSuccess(order);
-    // loading = false;
+    try {
+      _decrementStock();
+    } catch (e, ex) {
+      onStockFail(e);
+      debugPrint("$e >>> $ex");
+      loading = false;
+      return;
+    }
+
+    final order = Order.fromCartManager(cartManager);
+    order.orderId = orderId.toString();
+
+    await order.save();
+    cartManager.clear();
+
+    //_getOrderId().then((value) => debugPrint(value.toString()));
+    onSuccess(order);
+    loading = false;
   }
 
   // TODO: PROCESSAR O PAGAMENTO
